@@ -11,8 +11,7 @@ class LoadFixtures extends Fixture
     {
         $loader = new AppNativeLoader();
         $objectSet = $loader->loadFile(__DIR__ . '/fixtures.yaml')->getObjects();
-        foreach($objectSet as $object)
-        {
+        foreach ($objectSet as $object) {
             $manager->persist($object);
         }
 

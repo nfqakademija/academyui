@@ -7,7 +7,8 @@ use Faker\Generator;
 
 class AppProvider extends BaseProvider
 {
-    public function __construct(Generator $generator) {
+    public function __construct(Generator $generator)
+    {
         parent::__construct($generator);
     }
 
