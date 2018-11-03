@@ -3,7 +3,7 @@
 NFQ Akademijos puslapis
 ============
 
-![](https://travis-ci.org/nfqakademija/sudopuslapis.svg?branch=master)
+[![Build Status](https://travis-ci.org/nfqakademija/sudopuslapis.svg?branch=master)](https://travis-ci.com/nfqakademija/sudopuslapis)
 
 # Paleidimo instrukcija
 
