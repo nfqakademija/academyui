@@ -19,8 +19,10 @@ Encore
      * and one CSS file (e.g. app.css) if you JavaScript imports CSS.
      */
     .addEntry('js/app', './assets/js/app.js')
+    .addEntry('js/adminlte/app', './assets/js/adminlte/app.js')
 
     .addStyleEntry('css/app', './assets/css/app.scss')
+    .addStyleEntry('css/adminlte/app', './assets/css/adminlte/app.scss')
     .addStyleEntry('css/adminlte/admin-lte', [
         './node_modules/font-awesome/css/font-awesome.min.css',
         './node_modules/admin-lte/dist/css/adminlte.min.css',
@@ -49,7 +51,6 @@ Encore
     //.autoProvidejQuery()
 
     .addPlugin(new CopyWebpackPlugin([
-        { from: './assets/images', to: 'images'},
         { from: './node_modules/admin-lte/plugins/jquery/jquery.min.js', to: 'js/adminlte'},
         { from: './node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js', to: 'js/adminlte'},
         { from: './node_modules/admin-lte/dist/js/adminlte.min.js', to: 'js/adminlte'}

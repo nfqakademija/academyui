@@ -56,6 +56,12 @@ class User implements UserInterface, \Serializable
     private $lastName;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
+     */
+    private $avatar;
+
+    /**
      * @var array
      * @ORM\Column(type="simple_array")
      */
@@ -64,7 +70,7 @@ class User implements UserInterface, \Serializable
     public function __construct()
     {
         $this->roles = [self::ROLE_USER];
-        $this->confirmedEmail = false;
+        $this->avatar = "avatar.png";
     }
 
     /**
@@ -207,5 +213,21 @@ class User implements UserInterface, \Serializable
     public function getFullName(): string
     {
         return $this->getFirstName() . ' ' . $this->getLastName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    /**
+     * @param mixed $avatar
+     */
+    public function setAvatar($avatar): void
+    {
+        $this->avatar = $avatar;
     }
 }
