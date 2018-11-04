@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -14,6 +16,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface, \Serializable
 {
     const ROLE_USER = 'ROLE_USER';
+    const ROLE_MENTOR = 'ROLE_MENTOR';
     const ROLE_ADMIN = 'ROLE_ADMIN';
 
     /**
@@ -67,8 +70,15 @@ class User implements UserInterface, \Serializable
      */
     private $roles;
 
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="user")
+     */
+    private $reviews;
+
     public function __construct()
     {
+        $this->reviews = new ArrayCollection();
         $this->roles = [self::ROLE_USER];
         $this->avatar = "avatar.png";
     }
@@ -111,6 +121,7 @@ class User implements UserInterface, \Serializable
     public function setPlainPassword($plainPassword): void
     {
         $this->plainPassword = $plainPassword;
+        $this->password = null;
     }
 
     /**
@@ -181,6 +192,7 @@ class User implements UserInterface, \Serializable
 
     public function eraseCredentials()
     {
+        $this->plainPassword = null;
     }
 
     public function serialize()
@@ -224,10 +236,10 @@ class User implements UserInterface, \Serializable
     }
 
     /**
-     * @param mixed $avatar
+     * @return mixed
      */
-    public function setAvatar($avatar): void
+    public function getReviews()
     {
-        $this->avatar = $avatar;
+        return $this->reviews;
     }
 }

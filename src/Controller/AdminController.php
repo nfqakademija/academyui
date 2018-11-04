@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Product;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,6 +21,26 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig', [
 
+        ]);
+    }
+
+    /**
+     * @Route("/reviews/show", name="admin_reviews_show")
+     */
+    public function showReviews()
+    {
+        //$reviews = $this->getDoctrine()
+        //    ->getRepository('App:Review')
+        //    ->findAll();
+
+        $reviews = $this->getDoctrine()
+            ->getRepository('App:User')
+            ->findAll();
+
+        var_dump($reviews);
+
+        return $this->render('admin/reviews/show.html.twig', [
+            'reviews' => '$reviews',
         ]);
     }
 

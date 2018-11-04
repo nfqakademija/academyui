@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures\ORM;
 
+use Doctrine\ORM\EntityManagerInterface;
 use Nelmio\Alice\Loader\NativeLoader;
 use Faker\Generator as FakerGenerator;
 
